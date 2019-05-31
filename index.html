@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <style>
+         :root {
+            --highlight-color: rgb(224, 160, 20);
+            --spacing: 10px;
+        }
+        
         * {
             box-sizing: border-box;
         }
@@ -14,11 +19,12 @@
         body {
             padding: 0;
             margin: 0;
+            color: snow;
         }
         
         body {
             /* background: no-repeat cover origin radial-gradient(#223344 0%, #453234 30%, #890878 70%, #367631 100%); */
-            background-color: sienna;
+            background-color: rgb(4, 20, 16);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -46,7 +52,7 @@
         }
         
         .image {
-            border: solid black 10px;
+            border: solid var(--highlight-color, snow) var(--spacing, 5px);
             width: 50%;
             background-image: url('michael-podger-41325-unsplash.jpg');
             background-position: center;
@@ -56,7 +62,7 @@
         }
         
         .header::last-word {
-            color: --highlight-color;
+            color: var(--highlight-color, snow);
         }
     </style>
     <title>Play With CSS Variables</title>
