@@ -9,6 +9,7 @@
          :root {
             --highlight-color: rgb(224, 160, 20);
             --spacing: 10px;
+            --blur: .5;
         }
         
         * {
@@ -60,6 +61,7 @@
             background-repeat: no-repeat;
             flex-grow: 1;
             margin: 10px;
+            filter: blur(var(--blur));
         }
         
         .header::last-word {
@@ -73,12 +75,40 @@
     <div class="header">CSS Variables With JS</div>
     <div class="controls">
         <label>Spacing<input type="range" name="spacing" id="spacing" min="5" max="50" value="15"></label>
-        <label>Blur<input type="range" name="blur" id="blur" min="0" max="1" value="0.5" step=".1"></label>
+        <label>Blur<input type="range" name="blur" id="blur" min="0" max="50" value="5" "></label>
         <input type="color" name="color" id="color">
     </div>
     <div class="image"></div>
 
     <script>
+        /*fetch needed elements*/
+        let size = document.querySelector('input#spacing');
+        let blur = document.querySelector('input#blur');
+        let colorPicker = document.querySelector('input#color');
+        let image = document.querySelector('.image');
+
+        /*handler functions*/
+        function handleSize(e) {
+            console.log('change event happened')
+            let value = e.currentTarget.value;
+            document.documentElement.style.setProperty(`--spacing`, `${value}px`);
+        }
+
+        function handleBlur(e) {
+            console.log('input event happened')
+            let value = e.currentTarget.value;
+            document.documentElement.style.setProperty(`--blur`, `${value}px`);
+        }
+
+        function handleColor(e) {
+            let value = e.currentTarget.value;
+            document.documentElement.style.setProperty(`--highlight-color`, `${value}`);
+        }
+
+        /*hook up event listeners*/
+        size.addEventListener('change', handleSize);
+        blur.addEventListener('input', handleBlur);
+        colorPicker.addEventListener('input', handleColor);
     </script>
 </body>
 
