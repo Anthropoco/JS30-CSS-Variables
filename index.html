@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <style>
          :root {
-            --highlight-color: rgb(224, 160, 20);
+            --highlight-color: #fea220;
             --spacing: 10px;
             --blur: .5;
         }
@@ -109,6 +109,13 @@
         size.addEventListener('change', handleSize);
         blur.addEventListener('input', handleBlur);
         colorPicker.addEventListener('input', handleColor);
+
+        /*set color picker to indicate initial highlight color*/
+        let initialColor = document.documentElement.style.getPropertyValue(`--highlight-color`);
+        console.log(initialColor);
+        console.log(initialColor);
+        console.log(initialColor);
+        colorPicker.setAttribute('value', initialColor);
     </script>
 </body>
 
